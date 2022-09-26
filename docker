@@ -1,0 +1,11 @@
+FROM node:12.18.3
+WORKDIR /app
+COPY ["package.json", "package-lock.json", "./"]
+RUN npm install --production
+COPY . .
+
+RUN npm run build
+
+EXPOSE 80
+EXPOSE 443
+CMD ["npm", "start"]
